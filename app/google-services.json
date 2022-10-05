@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "432479934767",
+    "project_id": "mobi-2852c",
+    "storage_bucket": "mobi-2852c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432479934767:android:6bd9b1c26813f67567a9da",
+        "android_client_info": {
+          "package_name": "com.example.mobi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432479934767-ld0ijo55smf1c79cbpca42p5n0mag3ji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzQfrlPgbxhilPP2z5sZfYCLGVCzOjPB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432479934767-ld0ijo55smf1c79cbpca42p5n0mag3ji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

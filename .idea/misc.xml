@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../Library/Android/sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.12129629629629629" />
+        <entry key="app/src/main/res/drawable-v24/circle_gray_stroke.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_phone_black_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_profiles.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/selector_menu_color.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/users.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/calendar.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/drawable_email.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/drawable_name.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/drawable_password.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_add_black_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_photo_alternate_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_to_photos_24.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_info.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_notice.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/photoedit.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/selector_menu_color.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable/seletor_menu_color.xml" value="0.1" />
+        <entry key="app/src/main/res/font/asterdam.xml" value="0.5883394029405382" />
+        <entry key="app/src/main/res/layout/activity_add_article.xml" value="0.11596221923828126" />
+        <entry key="app/src/main/res/layout/activity_add_guestsign.xml" value="0.15092592592592594" />
+        <entry key="app/src/main/res/layout/activity_add_photo.xml" value="0.19846153846153847" />
+        <entry key="app/src/main/res/layout/activity_bluetooth.xml" value="0.12129629629629629" />
+        <entry key="app/src/main/res/layout/activity_bluetooth2.xml" value="0.21057394522207756" />
+        <entry key="app/src/main/res/layout/activity_calendar.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/layout/activity_guest_form_state.xml" value="0.15092592592592594" />
+        <entry key="app/src/main/res/layout/activity_guest_form_state2.xml" value="0.20462962962962963" />
+        <entry key="app/src/main/res/layout/activity_guest_status.xml" value="0.15092592592592594" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.14661102294921877" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_message.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/layout/activity_notice_detail.xml" value="0.20341033935546876" />
+        <entry key="app/src/main/res/layout/activity_password_reset.xml" value="0.17592074649112" />
+        <entry key="app/src/main/res/layout/activity_profile_setting.xml" value="0.20462962962962963" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.23744964599609378" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/layout/activity_splash2.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/layout/activity_user_init.xml" value="0.29288940429687504" />
+        <entry key="app/src/main/res/layout/activity_write_post.xml" value="0.10063781738281251" />
+        <entry key="app/src/main/res/layout/blink_animation.xml" value="0.1390625" />
+        <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.20462962962962963" />
+        <entry key="app/src/main/res/layout/custumdialog.xml" value="0.20462962962962963" />
+        <entry key="app/src/main/res/layout/dialog_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/layout/fragment_friend.xml" value="0.19614257812500002" />
+        <entry key="app/src/main/res/layout/fragment_friend2.xml" value="0.20462962962962963" />
+        <entry key="app/src/main/res/layout/fragment_guest_form.xml" value="0.12129629629629629" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.18014678955078123" />
+        <entry key="app/src/main/res/layout/fragment_home2.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_notice.xml" value="0.15899810791015626" />
+        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.19981842041015627" />
+        <entry key="app/src/main/res/layout/item_article.xml" value="0.23080223931206595" />
+        <entry key="app/src/main/res/layout/item_chat.xml" value="0.19011224817346645" />
+        <entry key="app/src/main/res/layout/item_friend.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/layout/item_guestform.xml" value="0.15092592592592594" />
+        <entry key="app/src/main/res/layout/item_message.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/layout/profile_dialog.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/settings_activity.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/testcode.xml" value="0.14916229248046875" />
+        <entry key="app/src/main/res/layout/view_loader.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.20858001708984375" />
+        <entry key="app/src/main/res/menu/post.xml" value="0.1" />
+        <entry key="app/src/main/res/xml/root_preferences.xml" value="0.28229166666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
