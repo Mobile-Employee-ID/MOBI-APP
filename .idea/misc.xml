@@ -17,8 +17,10 @@
         <entry key="app/src/main/res/drawable/ic_add_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_photo_alternate_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_to_photos_24.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable/ic_baseline_tablet_android_24.xml" value="0.158" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_info.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.158" />
         <entry key="app/src/main/res/drawable/ic_notice.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/photoedit.xml" value="0.1" />
@@ -40,7 +42,7 @@
         <entry key="app/src/main/res/layout/activity_notice_detail.xml" value="0.20341033935546876" />
         <entry key="app/src/main/res/layout/activity_password_reset.xml" value="0.17592074649112" />
         <entry key="app/src/main/res/layout/activity_profile_setting.xml" value="0.20462962962962963" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.23744964599609378" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.3678329467773438" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.16018518518518518" />
         <entry key="app/src/main/res/layout/activity_splash2.xml" value="0.16018518518518518" />
         <entry key="app/src/main/res/layout/activity_user_init.xml" value="0.29288940429687504" />

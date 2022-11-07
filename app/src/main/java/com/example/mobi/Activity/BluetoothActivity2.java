@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,18 +19,15 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,9 +38,9 @@ import com.example.mobi.R;
 public class BluetoothActivity2 extends AppCompatActivity
 {
     private final int REQUEST_BLUETOOTH_ENABLE = 100;
-
+    private Context context = BluetoothActivity2.this;
     private TextView mConnectionStatus;
-    private EditText mInputEditText;
+    private TextView mInputEditText;
 
     ConnectedTask mConnectedTask = null;
     static BluetoothAdapter mBluetoothAdapter;
@@ -65,7 +63,7 @@ public class BluetoothActivity2 extends AppCompatActivity
         ClickButton.setOnClickListener(new View.OnClickListener() {
                         public void onClick(View view)
                         {
-                            String sendMessage = mInputEditText.getText().toString();
+                            String sendMessage = mInputEditText.toString();
                             if (sendMessage.length() > 1)
                             {
                                 sendMessage(sendMessage);
@@ -90,8 +88,8 @@ public class BluetoothActivity2 extends AppCompatActivity
             }
         });
         mConnectionStatus = (TextView) findViewById(R.id.connection_status_textview);
-        mInputEditText = (EditText) findViewById(R.id.input_string_edittext);
-
+        mInputEditText = (TextView) findViewById(R.id.input_string_edittext);
+        mInputEditText.setText("DeviceId : "+getDeviceId(context));
         mConversationArrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1);
 
@@ -125,6 +123,10 @@ public class BluetoothActivity2 extends AppCompatActivity
 
             showPairedDevicesListDialog();
         }
+    }
+
+    public static String getDeviceId(Context context) {
+        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
     @Override

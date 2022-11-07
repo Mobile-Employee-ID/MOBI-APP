@@ -83,16 +83,17 @@ class NoticeDetailActivity : AppCompatActivity() {
 
 //    @Override
 //    override fun onBackPressed() {
-//        articleList.clear()
 //
-//        exitApp()
+//        finish()
+//        articleList.clear()
 //    }
-    @Override
-    override fun onPause() {
-        super.onPause()
-        articleList.clear()
-        Log.d("life_cycle", "onPause")
-    }
+
+//    @Override
+//    override fun onPause() {
+//        super.onPause()
+//        articleList.clear()
+//        Log.d("life_cycle", "onPause")
+//    }
 
 //    private fun exitApp() {
 //        val i = Intent(this, NoticeFragment::class.java)

@@ -46,16 +46,6 @@
 
 
 
-    <ImageButton
-        android:id="@+id/addFloatingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbarLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_add_black_24dp"
-        app:tint="@color/black" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

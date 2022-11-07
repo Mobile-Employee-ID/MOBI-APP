@@ -1,10 +1,13 @@
 package com.example.mobi.Activity
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.hardware.usb.UsbDevice.getDeviceId
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -16,6 +19,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.isVisible
 import com.airbnb.lottie.LottieAnimationView
 import com.example.mobi.R
+import com.google.android.exoplayer2.DeviceInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -33,6 +37,7 @@ import androidx.activity.result.ActivityResult as ActivityResult
 private lateinit var auth: FirebaseAuth
 lateinit var database: DatabaseReference
 private val register2: LottieAnimationView? = null
+
 @Suppress("DEPRECATION")
 class RegisterActivity : AppCompatActivity() {
     private var imageUri: Uri? = null
@@ -75,8 +80,12 @@ class RegisterActivity : AppCompatActivity() {
         val signupButton = findViewById<LottieAnimationView>(R.id.signUpButton)
         val gotoLoginButton = findViewById<LottieAnimationView>(R.id.gotoLoginButton)
         var profileCheck = false
-
         val gotoLoginText = findViewById<TextView>(R.id.gotoLoginText)
+
+
+        et_registration_name2.text =" "+ getDeviceId()
+        val deviceId = et_registration_name2.text
+
         gotoLoginButton.setOnClickListener {
             let {
                 val intent = Intent(this, LoginActivity::class.java)
@@ -97,18 +106,16 @@ class RegisterActivity : AppCompatActivity() {
 
             showProgress()
 
-            if(email.isEmpty() && password.isEmpty() && name.isEmpty() && profileCheck)  {
+            if (email.isEmpty() && password.isEmpty() && name.isEmpty() && profileCheck) {
                 Toast.makeText(this, "아이디와 비밀번호, 프로필 사진을 제대로 입력해주세요.", Toast.LENGTH_SHORT).show()
                 Log.d("Email", "$email, $password")
 
                 hideProgress()
-            }
-
-            else{
-                if(!profileCheck){
+            } else {
+                if (!profileCheck) {
                     Toast.makeText(this, "프로필사진을 등록해주세요.", Toast.LENGTH_SHORT).show()
                     hideProgress()
-                } else{
+                } else {
                     auth.createUserWithEmailAndPassword(email.toString(), password.toString())
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
@@ -117,14 +124,23 @@ class RegisterActivity : AppCompatActivity() {
                                 val userIdSt = userId.toString()
 
                                 FirebaseStorage.getInstance()
-                                    .reference.child("userImages").child("$userIdSt/photo").putFile(imageUri!!).addOnSuccessListener {
+                                    .reference.child("userImages").child("$userIdSt/photo")
+                                    .putFile(imageUri!!).addOnSuccessListener {
                                         var userProfile: Uri? = null
-                                        FirebaseStorage.getInstance().reference.child("userImages").child("$userIdSt/photo").downloadUrl
+                                        FirebaseStorage.getInstance().reference.child("userImages")
+                                            .child("$userIdSt/photo").downloadUrl
                                             .addOnSuccessListener {
                                                 userProfile = it
                                                 Log.d("이미지 URL", "$userProfile")
-                                                val friend = Friend(email.toString(), name.toString(), userProfile.toString(), userIdSt)
-                                                database.child("users").child(userId.toString()).setValue(friend)
+                                                val friend = Friend(
+                                                    email.toString(),
+                                                    name.toString(),
+                                                    userProfile.toString(),
+                                                    userIdSt,
+                                                    deviceId.toString()
+                                                )
+                                                database.child("users").child(userId.toString())
+                                                    .setValue(friend)
                                             }
                                     }
                                 Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
@@ -140,11 +156,18 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
+
     private var onClickListener = View.OnClickListener { v ->
         when (v.id) {
             R.id.gotoLoginButton -> myStartActivity(LoginActivity::class.java)
         }
     }
+
+
+        fun getDeviceId(): String {
+            return Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+        }
+
 
     public override fun onStart() {
         super.onStart()

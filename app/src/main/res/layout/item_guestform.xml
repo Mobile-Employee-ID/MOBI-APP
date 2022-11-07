@@ -50,6 +50,7 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
+
         app:layout_constraintEnd_toStartOf="@+id/thumbnailImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dateText" />

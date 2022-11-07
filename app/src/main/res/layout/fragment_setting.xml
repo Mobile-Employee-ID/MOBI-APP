@@ -113,7 +113,7 @@
             android:gravity="center_vertical"
             android:layout_weight="1"
             android:textSize="20sp"
-            android:text="  나의 출입신청 기록"
+            android:text="  출입신청 기록"
             android:textColor="#0B0A0A"
             android:background="?attr/selectableItemBackground"/>
 
