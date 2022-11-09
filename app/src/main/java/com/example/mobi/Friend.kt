@@ -5,9 +5,10 @@ data class Friend(
     val name: String? = null,
     val profileImageUrl: String? = null,
     val uid: String? = null,
-    val deviceId: String? = null
+    val deviceId: String? = null,
+    val noticeAuth : Boolean? = null
 ) {
 
-    constructor() : this("", "", "", "","")
+    constructor() : this("", "", "", "","",true)
 
 }

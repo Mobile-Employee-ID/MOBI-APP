@@ -164,9 +164,9 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 
-        fun getDeviceId(): String {
-            return Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
-        }
+    fun getDeviceId(): String {
+        return Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+    }
 
 
     public override fun onStart() {

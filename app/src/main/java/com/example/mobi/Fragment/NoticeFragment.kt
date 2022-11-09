@@ -103,12 +103,13 @@ class NoticeFragment : Fragment(R.layout.fragment_notice) {
             .stackFromEnd = true
         articleRecyclerView.layoutManager = (fragmentNoticeBinding.articleRecyclerView.layoutManager as LinearLayoutManager)
 
+
         //플로팅버튼 fragment에서 화면 넘기기
         fragmentNoticeBinding.addFloatingButton.setOnClickListener {
             context?.let {
 
                 //회원만 게시글을 올릴 수 있게 해놨다. TODO: 지정한 운영자만 게시글을 올릴 수 있게 수정하기
-                if (auth.currentUser != null) {
+                if (auth.currentUser != null  ) {
                     val intent = Intent(requireContext(), AddArticleActivity::class.java)
                     startActivity(intent)
                 } else {
@@ -118,7 +119,7 @@ class NoticeFragment : Fragment(R.layout.fragment_notice) {
 
             }
         }
-       //  articleDB.addChildEventListener(listener)
+        //  articleDB.addChildEventListener(listener)
     }
 
 

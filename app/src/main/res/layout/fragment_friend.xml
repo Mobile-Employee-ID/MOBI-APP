@@ -31,12 +31,12 @@
         android:layout_height="1dp"
         android:background="@color/gray_cc" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view_phone_book"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        app:queryHint="이름을 입력하세요" />
+<!--    <EditText-->
+<!--        android:id="@+id/searchView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:iconifiedByDefault="false"-->
+<!--        app:queryHint="이름을 입력하세요" />-->
 
     <View
         android:layout_width="match_parent"

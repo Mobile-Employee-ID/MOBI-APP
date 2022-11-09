@@ -1,20 +1,15 @@
 package com.example.mobi.Fragment
 
 import android.annotation.SuppressLint
-import android.app.ProgressDialog.show
-import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.AbsListView
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -27,9 +22,8 @@ import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.fragment_friend.*
 import kotlinx.android.synthetic.main.fragment_setting.*
-import java.lang.Exception
 
 class FriendFragment : Fragment() {
     companion object {
@@ -38,6 +32,8 @@ class FriendFragment : Fragment() {
         }
     }
 
+    var foodItemArrayList: ArrayList<Friend>? = null
+    var filteredList:ArrayList<Friend>? = null
     private lateinit var database: DatabaseReference
     private var friend: ArrayList<Friend> = arrayListOf()
     //메모리에 올라갔을 때
@@ -66,6 +62,8 @@ class FriendFragment : Fragment() {
         //this는 액티비티에서 사용가능, 프래그먼트는 requireContext()로 context 가져오기
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = RecyclerViewAdapter()
+
+
 
         return view
     }
@@ -155,12 +153,12 @@ class FriendFragment : Fragment() {
                             context?.startActivity(intent)
                     }
                     coolDialog.setCancelButtonOnClickListener() {
-                        Toast.makeText(requireContext(), "취소했습니다.", Toast.LENGTH_SHORT).show()
-                        coolDialog.dismiss()
-                    }
+                        Toast
+                        .makeText(requireContext(), "취소했습니다.", Toast.LENGTH_SHORT).show()
+                    coolDialog.dismiss()
+                }
 
-                    coolDialog.show()
-
+                coolDialog.show()
 //                    dialog.setButtonClickListener(object : ProfileDialog.OnButtonClickListener {
 //                        override fun onButton1Clicked() {
 //                            Toast.makeText(requireContext(), "취소했습니다.", Toast.LENGTH_SHORT)
