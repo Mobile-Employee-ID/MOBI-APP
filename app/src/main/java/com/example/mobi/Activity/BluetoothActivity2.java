@@ -33,6 +33,10 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.mobi.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.ktx.Firebase;
 
 
 public class BluetoothActivity2 extends AppCompatActivity
@@ -42,12 +46,17 @@ public class BluetoothActivity2 extends AppCompatActivity
     private TextView mConnectionStatus;
     private TextView mInputEditText;
 
+    private FirebaseDatabase database;
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
+
     ConnectedTask mConnectedTask = null;
     static BluetoothAdapter mBluetoothAdapter;
     private String mConnectedDeviceName = null;
     private ArrayAdapter<String> mConversationArrayAdapter;
     static boolean isConnectionError = false;
     private static final String TAG = "BluetoothClient";
+
 
     private static LottieAnimationView sendButton;
     private static LottieAnimationView ClickButton;
@@ -58,12 +67,22 @@ public class BluetoothActivity2 extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth2);
 
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        String userkey = user.getUid();
+
+        String lastkey = userkey +" "+ getDeviceId(context);
+//        private val fireDatabase = FirebaseDatabase.getInstance().reference
+//        private val user = Firebase.auth.currentUser
+//        private val uid = user?.uid.toString()
 
         ClickButton = findViewById(R.id.click_button);
         ClickButton.setOnClickListener(new View.OnClickListener() {
                         public void onClick(View view)
                         {
-                            String sendMessage = mInputEditText.toString();
+                            String sendMessage = lastkey;
+                           // String sendMessage = mInputEditText.toString();
                             if (sendMessage.length() > 1)
                             {
                                 sendMessage(sendMessage);
@@ -89,7 +108,7 @@ public class BluetoothActivity2 extends AppCompatActivity
         });
         mConnectionStatus = (TextView) findViewById(R.id.connection_status_textview);
         mInputEditText = (TextView) findViewById(R.id.input_string_edittext);
-        mInputEditText.setText("DeviceId : "+getDeviceId(context));
+        mInputEditText.setText(getDeviceId(context));
         mConversationArrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1);
 
