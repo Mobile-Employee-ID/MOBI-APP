@@ -1,17 +1,16 @@
 package com.example.mobi.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.example.mobi.ArticleModel
-import com.example.mobi.DBkey.Companion.DB_ARTICLES
 import com.example.mobi.DBkey.Companion.DB_FORMS
 import com.example.mobi.GuestSignModel
 import com.example.mobi.R
@@ -43,7 +42,7 @@ class AddGuestFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_guestsign)
 
-
+        val deviceID = getDeviceId()
         findViewById<Button>(R.id.guestsignSubmitButton).setOnClickListener {
             val title = findViewById<EditText>(R.id.guestsignTitleText).text.toString()
             val contents = findViewById<EditText>(R.id.guestsignContentsText).text.toString()
@@ -51,17 +50,18 @@ class AddGuestFormActivity : AppCompatActivity() {
 
             showProgress()
 
-
-            uploadForm(writerId, title, contents)
+            uploadForm(writerId, title, contents, deviceID)
 
         }
 
     }
 
-
+    fun getDeviceId(): String {
+        return Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+    }
     //신청서 업로드 함수
-    private fun uploadForm(writerId: String, title: String, contents: String) {
-        val model = GuestSignModel(writerId, title, System.currentTimeMillis(), contents)
+    private fun uploadForm(writerId: String, title: String, contents: String, deviceID:String) {
+        val model = GuestSignModel(writerId, title, System.currentTimeMillis(), contents, deviceID)
         guestformDB.push().setValue(model)
         Toast.makeText(this, "출입 신청이 등록되었습니다 기록을 확인해보세요.", Toast.LENGTH_SHORT).show()
         hideProgress()

@@ -39,7 +39,7 @@
             android:name=".Activity.CalendarActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.BluetoothActivity2"
+            android:name=".Activity.BluetoothActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.MessageActivity"

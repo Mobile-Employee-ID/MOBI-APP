@@ -36,13 +36,12 @@ import com.example.mobi.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.ktx.Firebase;
 
 
-public class BluetoothActivity2 extends AppCompatActivity
+public class BluetoothActivity extends AppCompatActivity
 {
     private final int REQUEST_BLUETOOTH_ENABLE = 100;
-    private Context context = BluetoothActivity2.this;
+    private Context context = BluetoothActivity.this;
     private TextView mConnectionStatus;
     private TextView mInputEditText;
 
@@ -126,12 +125,12 @@ public class BluetoothActivity2 extends AppCompatActivity
         if (!mBluetoothAdapter.isEnabled())
         {
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            if (ContextCompat.checkSelfPermission(BluetoothActivity2.this,
+            if (ContextCompat.checkSelfPermission(BluetoothActivity.this,
                     Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED)
             {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
                 {
-                    ActivityCompat.requestPermissions(BluetoothActivity2.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 2);
+                    ActivityCompat.requestPermissions(BluetoothActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 2);
                     return;
                 }
             }
@@ -171,12 +170,12 @@ public class BluetoothActivity2 extends AppCompatActivity
         ConnectTask(BluetoothDevice bluetoothDevice)
         {
             mBluetoothDevice = bluetoothDevice;
-            if (ContextCompat.checkSelfPermission(BluetoothActivity2.this,
+            if (ContextCompat.checkSelfPermission(BluetoothActivity.this,
                     Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED)
             {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
                 {
-                    ActivityCompat.requestPermissions(BluetoothActivity2.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 2);
+                    ActivityCompat.requestPermissions(BluetoothActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 2);
                     return;
                 }
             }

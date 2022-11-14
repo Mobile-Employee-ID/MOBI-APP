@@ -83,7 +83,7 @@ class RegisterActivity : AppCompatActivity() {
         val gotoLoginText = findViewById<TextView>(R.id.gotoLoginText)
 
 
-        et_registration_name2.text =" "+ getDeviceId()
+        et_registration_name2.text =getDeviceId()
         val deviceId = et_registration_name2.text
 
         gotoLoginButton.setOnClickListener {

@@ -7,13 +7,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.mobi.Activity.BluetoothActivity2
+import com.example.mobi.Activity.BluetoothActivity
 import com.example.mobi.Activity.CalendarActivity
 import com.example.mobi.Friend
 import com.example.mobi.R
@@ -24,7 +23,7 @@ import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.fragment_home.*
+
 private val calendarView: LottieAnimationView? = null
 class HomeFragment : Fragment(R.layout.fragment_home) {
     companion object {
@@ -106,7 +105,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         startText?.setOnClickListener {
             context?.let {
                 if (auth.currentUser != null) {
-                    val intent = Intent(requireContext(), BluetoothActivity2::class.java)
+                    val intent = Intent(requireContext(), BluetoothActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)
                 }
