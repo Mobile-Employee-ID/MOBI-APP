@@ -66,8 +66,19 @@
             android:layout_alignLeft="@id/name"
             android:layout_marginTop="3dp"
             android:text="gildong.hong@snu.ac.kr"
-            android:textColor="#686161"
-            />
+            android:textColor="#686161" />
+
+        <TextView
+            android:id="@+id/AccessGrant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_alignLeft="@id/name"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="35dp"
+            android:text="출입 승인/거부"
+            android:textColor="#686161" />
+
 
     </RelativeLayout>
 

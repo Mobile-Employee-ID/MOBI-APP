@@ -6,8 +6,9 @@ data class Friend(
     val profileImageUrl: String? = null,
     val uid: String? = null,
     val deviceId: String? = null,
+    var gategrant: String? = null,
 ) {
 
-    constructor() : this("", "", "", "","")
+    constructor() : this("", "", "", "","","")
 
 }

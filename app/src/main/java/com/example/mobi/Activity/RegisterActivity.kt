@@ -85,7 +85,7 @@ class RegisterActivity : AppCompatActivity() {
 
         et_registration_name2.text =getDeviceId()
         val deviceId = et_registration_name2.text
-
+        val gategrant = "승인 거부"
         gotoLoginButton.setOnClickListener {
             let {
                 val intent = Intent(this, LoginActivity::class.java)
@@ -137,7 +137,8 @@ class RegisterActivity : AppCompatActivity() {
                                                     name.toString(),
                                                     userProfile.toString(),
                                                     userIdSt,
-                                                    deviceId.toString()
+                                                    deviceId.toString(),
+                                                    gategrant
                                                 )
                                                 database.child("users").child(userId.toString())
                                                     .setValue(friend)

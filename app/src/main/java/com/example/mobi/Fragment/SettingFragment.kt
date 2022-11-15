@@ -4,22 +4,21 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.mobi.Activity.*
-import com.example.mobi.Adapter.ArticleAdapter
 import com.example.mobi.CustomDialog
 import com.example.mobi.Friend
 import com.example.mobi.R
@@ -32,8 +31,8 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_setting.*
+
 
 class SettingFragment : Fragment(R.layout.fragment_setting) {
     //lateinit var binding: FragmentSettingBinding
@@ -100,8 +99,17 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
         val photoedit = view?.findViewById<ImageView>(R.id.photoedit)
         val email = view?.findViewById<TextView>(R.id.email)
         val name = view?.findViewById<TextView>(R.id.name)
+        val grant = view?.findViewById<TextView>(R.id.AccessGrant)
+
+        val gatePassID = fireDatabase.child("gatePassID").child(uid)
+        val userID = fireDatabase.child("users").child(uid)
+        val gateApprove =
+            fireDatabase.child("gatePassID").child("11").child(uid).child("access").toString()
 
 
+        println(gatePassID)
+        println(userID)
+        println(gateApprove)
         //프로필 구현
         fireDatabase.child("users").child(uid)
             .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -117,6 +125,116 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
                         .into(photo)
                     email?.text = userProfile?.email
                     name?.text = userProfile?.name
+                    grant?.text = userProfile?.gategrant
+                }
+            })
+//            .child("gatePassID").child("11").child(uid).child("access")
+        fireDatabase
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+//                    val userProfile2 = snapshot.getValue<Friend>()
+//                    println(userProfile2)
+
+                    var userProfile2 = snapshot.child("users").child(uid).getValue<Friend>()
+                    var value : String? = snapshot.child("gatePassID").child("11").child(uid).child("access").getValue(String::class.java) as? String
+                    var value1 : String? = snapshot.child("gatePassID").child("12").child(uid).child("access").getValue(String::class.java) as? String
+                    var value2 : String? = snapshot.child("gatePassID").child("13").child(uid).child("access").getValue(String::class.java) as? String
+                    println(value)
+                    if ( value == "Approval") {
+//gatePassID == userID &&
+
+                        userProfile2?.gategrant = "11번 게이트 출입 승인"
+                        grant?.text = userProfile2?.gategrant
+//                        userProfile2?.gategrant = "승인 허가"
+//                        grant?.text = userProfile2?.gategrant
+                            println("okay")
+
+                        fireDatabase.child("users").child(uid).child("gategrant")
+                            .setValue(userProfile2?.gategrant) //저장
+                    }else if(value != "Approval" && value1 != "Approval" && value2 != "Approval"){
+                        userProfile2?.gategrant =  "출입 거부"
+                        grant?.text = userProfile2?.gategrant
+                        println("not okay")
+
+                        fireDatabase.child("users").child(uid).child("gategrant").setValue(userProfile2?.gategrant)
+
+                    }
+                    if (  value1 == "Approval" ) {
+//gatePassID == userID &&
+
+                        userProfile2?.gategrant = "12번 게이트 출입 승인"
+                        grant?.text = userProfile2?.gategrant
+//                        userProfile2?.gategrant = "승인 허가"
+//                        grant?.text = userProfile2?.gategrant
+                        println("okay")
+
+                        fireDatabase.child("users").child(uid).child("gategrant")
+                            .setValue(userProfile2?.gategrant) //저장
+                    }
+                    if (  value2 == "Approval") {
+//gatePassID == userID &&
+
+                        userProfile2?.gategrant = "13번 게이트 출입 승인"
+                        grant?.text = userProfile2?.gategrant
+//                        userProfile2?.gategrant = "승인 허가"
+//                        grant?.text = userProfile2?.gategrant
+                        println("okay")
+
+                        fireDatabase.child("users").child(uid).child("gategrant")
+                            .setValue(userProfile2?.gategrant) //저장
+                    }
+                    if (  value == "Approval" && value1 == "Approval") {
+//gatePassID == userID &&
+
+                        userProfile2?.gategrant = "11번 12번 게이트 출입 승인"
+                        grant?.text = userProfile2?.gategrant
+//                        userProfile2?.gategrant = "승인 허가"
+//                        grant?.text = userProfile2?.gategrant
+                        println("okay")
+
+                        fireDatabase.child("users").child(uid).child("gategrant")
+                            .setValue(userProfile2?.gategrant) //저장
+                    }
+                    if (  value == "Approval" && value2 == "Approval") {
+//gatePassID == userID &&
+
+                        userProfile2?.gategrant = "11번 13번 게이트 출입 승인"
+                        grant?.text = userProfile2?.gategrant
+//                        userProfile2?.gategrant = "승인 허가"
+//                        grant?.text = userProfile2?.gategrant
+                        println("okay")
+
+                        fireDatabase.child("users").child(uid).child("gategrant")
+                            .setValue(userProfile2?.gategrant) //저장
+                    }
+                    if (  value1 == "Approval" && value2 == "Approval") {
+//gatePassID == userID &&
+
+                        userProfile2?.gategrant = "12번 13번 게이트 출입 승인"
+                        grant?.text = userProfile2?.gategrant
+//                        userProfile2?.gategrant = "승인 허가"
+//                        grant?.text = userProfile2?.gategrant
+                        println("okay")
+
+                        fireDatabase.child("users").child(uid).child("gategrant")
+                            .setValue(userProfile2?.gategrant) //저장
+                    }
+                    if (  value == "Approval" && value1 == "Approval" && value2 == "Approval") {
+//gatePassID == userID &&
+
+                        userProfile2?.gategrant = "11번 12번 13번 게이트 출입 승인"
+                        grant?.text = userProfile2?.gategrant
+//                        userProfile2?.gategrant = "승인 허가"
+//                        grant?.text = userProfile2?.gategrant
+                        println("okay")
+
+                        fireDatabase.child("users").child(uid).child("gategrant")
+                            .setValue(userProfile2?.gategrant) //저장
+                    }
+
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                    //Log.e("MainActivity", String.valueOf(databaseError.toException()));
                 }
             })
         //프로필 사진 변경
