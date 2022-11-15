@@ -1,18 +1,20 @@
 package com.example.mobi.Fragment
 
+import android.app.ListActivity
+import android.content.Context
 import android.content.Intent
-import android.content.Intent.getIntent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobi.Activity.AddArticleActivity
-import com.example.mobi.Activity.MessageActivity
+import com.example.mobi.Activity.MainActivity
 import com.example.mobi.Activity.NoticeDetailActivity
 import com.example.mobi.Adapter.ArticleAdapter
 import com.example.mobi.ArticleModel
 import com.example.mobi.DBkey.Companion.DB_ARTICLES
-import com.example.mobi.Friend
 import com.example.mobi.R
 import com.example.mobi.databinding.FragmentNoticeBinding
 import com.google.android.material.snackbar.Snackbar
@@ -30,7 +32,7 @@ import kotlinx.android.synthetic.main.fragment_notice.*
 import kotlinx.android.synthetic.main.item_article.*
 import kotlinx.android.synthetic.main.item_article.view.*
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class NoticeFragment : Fragment(R.layout.fragment_notice) {
 
@@ -38,7 +40,6 @@ class NoticeFragment : Fragment(R.layout.fragment_notice) {
     private lateinit var articleDB: DatabaseReference
     private val articleList = mutableListOf<ArticleModel>() // 데이터 스냅샷을 통한 데이터 변경을 알기위해 아티클데이터 변수 설정
     private var article : ArrayList<ArticleModel> = arrayListOf()
-
     //차일드 이벤트 리스너 전역변수 설정
     private val listener = object : ChildEventListener {
         override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
@@ -122,12 +123,18 @@ class NoticeFragment : Fragment(R.layout.fragment_notice) {
         //  articleDB.addChildEventListener(listener)
     }
 
-
+    fun refreshFragment(fragment: Fragment, fragmentManager: FragmentManager) {
+        var ft: FragmentTransaction = fragmentManager.beginTransaction()
+        ft.detach(fragment).attach(fragment).commit()
+    }
     //  게시글 올렸을때 데이터 변환을 알고 새로고침해줌
     override fun onResume() {
         super.onResume()
 
-        articleAdapter.notifyDataSetChanged()
+
+//        articleList.clear() // 화면 옮기면 두번 출력되는거 방지
+        getFragmentManager()?.let { refreshFragment(this, it) }
+        //articleAdapter.notifyDataSetChanged()
     }
 
     override fun onDestroyView() {
